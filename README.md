@@ -4,6 +4,7 @@ DIM3-Best-Deals
 1. Django v1.61
 2. Python v2.75
 
+---
 
 ## How to install and setup?
 1. Download from the project from [DIM3-Best-Deals](https://github.com/mOcentury/DIM3-Best-Deals/archive/master.zip)
@@ -17,3 +18,8 @@ DIM3-Best-Deals
 ## User accounts
     Username: joe
     Password: joe
+
+---
+
+## Links
+[DIM3-Best-Deals @ Python anywhere](http://iceyfinal.pythonanywhere.com/)
