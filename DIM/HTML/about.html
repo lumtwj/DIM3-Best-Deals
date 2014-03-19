@@ -1,0 +1,163 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Deals Meta-Searcher</title>
+    <meta name="keywords" content="catalog, responsive, bootstrap, free template, fluid layout, templatemo, html5 css3" />
+    <meta name="description" content="Catalog theme is free responsive design based on Bootstrap framework." />
+    <link href="{% static 'css/font-awesome.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/offcanvas.css' %}" rel="stylesheet">
+    <link href="{% static 'css/templatemo_style.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+<header>
+
+    <div class="container logo">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="{% static 'images/bestdealsrounded.png' %}" alt="BestDeals">
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-default" role="navigation">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/bestbuy/index">Home</a></li>
+                <!--<li><a href="search.html">Search</a></li>-->
+                <li><a href="/bestbuy/about">About</a></li>
+                <!--<li><a href="#flash_templates">Flash Templates</a></li>
+                <li><a href="contact.html">Contact</a></li>-->
+            </ul>
+        </div><!-- /.navbar-collapse -->
+
+    </nav>
+</header>
+
+<div class="container" id="home">
+    <div class="row row-offcanvas row-offcanvas-left">
+        <div class="col col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+            <div class="sidebar-nav">
+
+                <h4>Login</h4>
+                <ul class="sidebar_menu">
+                    <form id="form1" name="form1" method="post" action="/bestbuy/auth/">{% csrf_token %}
+                        Login: <input type="text" name="username" id="username" />
+                        Password:<input type="password" name="password" id="password"/>
+                        <input type="submit" value="login">
+                    </form>
+                </ul>
+
+                <hr>
+
+                <h4>Register</h4>
+                <p>New user? Sign up now to view all the current best deals available.</p>
+                <input name="Register" type="submit" value="Register" onClick="parent.location='/bestbuy/register/'">
+
+                <hr>
+
+                <div class="social_buttons">
+                    <a href="http://twitter.com" rel="nofollow" class="icon-button twitter"><i class="icon-twitter"></i><span></span></a>
+                    <a href="http://facebook.com" rel="nofollow" class="icon-button facebook"><i class="icon-facebook"></i><span></span></a>
+                    <a href="http://plus.google.com" rel="nofollow" class="icon-button google-plus"><i class="icon-google-plus"></i><span></span></a>
+                </div>
+
+                <hr>
+
+            </div>
+        </div> <!-- col sidebar -->
+
+        <div class="col col-xs-12 col-sm-9">
+            <p class="pull-left visible-xs">
+                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+            </p>
+
+            <section class="row" id="home">
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <h3>About Us</h3>
+                        Welcome to our website!<br>
+                        Here, mechandises get to showcase their deals allowing consumers to purchase.<br>
+                        All the deals shown are of reasonable price.<br>
+                        It is a <b>Best buy, Good buy, Must buy</b> deals!<br>
+                        Get them before it is over! <br>
+                    </div>
+                </div>
+
+        </div> <!-- col -->
+    </div>  <!-- row -->
+</div> <!-- container -->
+<footer class="container">
+    <div class="credit">
+        <p id="templatemo_cr_bar">
+            Copyright © 2014 Team Ramen
+        </p>
+    </div>
+</footer>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/offcanvas.js' %}"></script>
+<!--
+http://masonry.desandro.com/
+http://desandro.mit-license.org/
+http://stackoverflow.com/questions/17767130/masonry-js-error-uncaught-typeerror-object-object-object-has-no-method-imag
+Align items in center: https://github.com/desandro/isotope/issues/20
+Hiding text overflow: http://stackoverflow.com/questions/15308061/how-to-avoid-text-overflow-in-twitter-bootstrap
+-->
+<script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
+<script src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+<script>
+
+    $(document).ready(function(){
+        init_masonry();
+    });
+
+    function init_masonry(){
+        var $container = $('.item_container');
+        $container.imagesLoaded( function(){
+            $container.masonry({
+                itemSelector : '.item',
+                "gutter": 18,
+                isFitWidth: true
+            });
+        });
+    }
+
+    $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });
+
+</script>
+</body>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script type='text/javascript' src="{% static 'js/logging.js' %}"></script>
+</html>
